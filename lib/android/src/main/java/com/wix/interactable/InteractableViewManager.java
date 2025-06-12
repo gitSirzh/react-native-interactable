@@ -10,6 +10,11 @@ import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.events.EventDispatcher;
 import com.wix.interactable.RNConvert.RNConvert;
+import com.facebook.react.uimanager.common.UIManagerType;
+import com.facebook.react.uimanager.UIManagerHelper;
+
+
+
 
 import java.util.Map;
 
@@ -150,7 +155,7 @@ public class InteractableViewManager extends ViewGroupManager<InteractableView> 
 
     @Override
     protected void addEventEmitters(ThemedReactContext reactContext, InteractableView view) {
-        view.setEventListener(new InteractionEventEmitter(view, reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher()));
+        view.setEventListener(new InteractionEventEmitter(view, UIManagerHelper.getUIManager(reactContext, UIManagerType.FABRIC).getEventDispatcher()));
     }
 
     @javax.annotation.Nullable
